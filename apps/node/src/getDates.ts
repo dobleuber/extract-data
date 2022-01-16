@@ -8,9 +8,9 @@ interface DateExtract {
     end: string[];
 }
 
-export default function getDates(text: string): DateExtract {
+export default function getDates(input: string): DateExtract {
   const tokenizer = new SentenceTokenizer();
-  const sentences = tokenizer.tokenize(text);
+  const sentences = tokenizer.tokenize(input);
 
   const dates = sentences
     .map((sentence) => {

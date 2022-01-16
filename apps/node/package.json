@@ -43,5 +43,8 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "natural": "^5.1.13"
   }
 }

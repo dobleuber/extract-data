@@ -5,4 +5,5 @@ function helloWord() {
     return 'hello world';
 }
 exports.helloWord = helloWord;
+helloWord();
 //# sourceMappingURL=index.js.map

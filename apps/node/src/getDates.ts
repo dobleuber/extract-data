@@ -1,17 +1,21 @@
 import { SentenceTokenizer } from 'natural';
 import getPeriods from './getPeriods';
 import formatDate from './formatDate';
+import patterns from './patterns';
 
-export default function getDates(text: string) {
+interface DateExtract {
+    start: string[];
+    end: string[];
+}
+
+export default function getDates(text: string): DateExtract {
   const tokenizer = new SentenceTokenizer();
   const sentences = tokenizer.tokenize(text);
-  const startsPatterns = /commenc/gi;
-  const endsPatterns = /end/gi;
-  const datePattern = /([A-Z](\w)+ \d{1,2})|(IPO Date)|(Trading Day)/g;
+
   const dates = sentences
     .map((sentence) => {
       const possibleDates =
-        startsPatterns.test(sentence) && endsPatterns.test(sentence);
+        patterns.dateStart.test(sentence) && patterns.dateEnd.test(sentence);
       if (possibleDates) {
         let endIndex = sentence.indexOf('ending on');
 
@@ -27,9 +31,9 @@ export default function getDates(text: string) {
 
         const endPart = sentence.substring(endIndex);
 
-        const startDates = beginPart.match(datePattern);
+        const startDates = beginPart.match(patterns.date);
 
-        let endDates = endPart.match(datePattern);
+        let endDates = endPart.match(patterns.date);
 
         if (endDates === null) {
           const period = getPeriods(sentence);

@@ -6,9 +6,9 @@ import getDates from './getDates';
 async function main() {
   const inputs = await getInputs('./inputs');
 
-    inputs.map((input, index) => {
-        const dates = getDates(input);
-        console.log(index);
+    inputs.map(({data, fileName}) => {
+        const dates = getDates(data);
+        console.log(fileName);
         console.log(dates);
     })
 }

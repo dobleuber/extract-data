@@ -2,7 +2,12 @@ import { existsSync, readdirSync } from 'fs';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
 
-function getInputFiles(inputPath: string): Promise<string[]> {
+interface InputFile {
+  data: string;
+  fileName: string;
+}
+
+function getInputFiles(inputPath: string): Promise<InputFile[]> {
   if (!existsSync(inputPath)) {
     const errorMessage = `Directory not found: ${inputPath}`;
     console.error(errorMessage);
@@ -14,7 +19,7 @@ function getInputFiles(inputPath: string): Promise<string[]> {
     const filePath = join(inputPath, fileName);
 
     return readFile(filePath, { encoding: 'utf-8' }).then((data) => {
-      return data;
+      return {data, fileName};
     });
   });
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "../index.module.css";
 
 import { parseJwt, localStorage } from "../utils";
 import { UserProfile } from "../components/UserProfile";
@@ -22,8 +23,8 @@ export default function Web({loginUri}) {
   };
 
   return (
-    <div>
-      <h1>Web</h1>
+    <div className={styles.container}>
+      <h1 className={styles.h1}>My Home Page</h1>
       <UserProfile username={username} logout={logout} loginUri={loginUri}/>
     </div>
   );

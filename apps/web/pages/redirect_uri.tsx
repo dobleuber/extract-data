@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 
 import { parseJwt, localStorage } from "../utils";
 
+import styles from "../index.module.css";
+
 export default function AuthCallback() {
   const [username, setUsername] = useState<string | null>(null);
   const router = useRouter();
@@ -22,11 +24,9 @@ export default function AuthCallback() {
   }, []);
 
   return (
-    <div>
-      <h1>Logged in!</h1>
-      {username}
-      <br/>
-      <button onClick={() => router.push("/")}>Go to home</button>
+    <div className={styles.container}>
+      <h1 className={styles.h1}>Welcome {username}!</h1>
+      <button className={styles.button} onClick={() => router.push("/")}>Go to home</button>
     </div>
   );
 }

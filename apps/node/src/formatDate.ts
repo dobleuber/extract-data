@@ -8,7 +8,6 @@ const monthNames = [
 export default function formatDate(date: Date): string {
     const month = monthNames[date.getMonth()];
     const day = date.getDate();
-    const year = date.getFullYear();
 
     return `${month} ${day}`;
 }

@@ -4,8 +4,8 @@ import formatDate from './formatDate';
 import patterns from './patterns';
 
 interface DateExtract {
-    start: string[];
-    end: string[];
+  start: string[];
+  end: string[];
 }
 
 export default function getDates(input: string): DateExtract {
@@ -56,13 +56,15 @@ export default function getDates(input: string): DateExtract {
     })
     .filter((date) => !!date);
 
-    
-    const result = dates.reduce((acc, date) => {
-        acc.start = [...new Set(acc.start.concat(date.start))];
-        acc.end = [... new Set(acc.end.concat(date.end))];
+  const result = dates.reduce(
+    (acc, date) => {
+      acc.start = [...new Set(acc.start.concat(date.start))];
+      acc.end = [...new Set(acc.end.concat(date.end))];
 
-        return acc;
-    }, {start: [], end: []});
+      return acc;
+    },
+    { start: [], end: [] },
+  );
 
   return result;
 }

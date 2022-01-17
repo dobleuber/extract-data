@@ -30,11 +30,11 @@ export default function getContributions(input: string): Contribution {
         const findIndex = sentence.indexOf(find);
         if (findIndex > -1) {
           const subSentence = sentence.substring(0, findIndex + find.length);
-          if (isMinimun(subSentence)) {
-            min.push(find);
-          } else if (isMaximun(subSentence)) {
+          if (isMaximun(subSentence)) {
             max.push(find);
-          }
+          } else if (isMinimun(subSentence)) {
+            min.push(find);
+          } 
         }
       });
 

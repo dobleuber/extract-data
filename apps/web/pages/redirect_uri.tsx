@@ -26,7 +26,9 @@ export default function AuthCallback() {
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Welcome {username}!</h1>
-      <button className={styles.button} onClick={() => router.push("/")}>Go to home</button>
+      <button className={styles.button} onClick={() => router.push("/")}>
+        Go to home
+      </button>
     </div>
   );
 }

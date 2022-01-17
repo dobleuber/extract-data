@@ -4,7 +4,7 @@ import styles from "../index.module.css";
 import { parseJwt, localStorage } from "../utils";
 import { UserProfile } from "../components/UserProfile";
 
-export default function Web({loginUri}) {
+export default function Web({ loginUri }) {
   const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
@@ -18,14 +18,14 @@ export default function Web({loginUri}) {
   }, []);
 
   const logout = () => {
-    localStorage.remove("token")
+    localStorage.remove("token");
     setUsername(null);
   };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>My Home Page</h1>
-      <UserProfile username={username} logout={logout} loginUri={loginUri}/>
+      <UserProfile username={username} logout={logout} loginUri={loginUri} />
     </div>
   );
 }
@@ -36,6 +36,6 @@ export async function getServerSideProps(context) {
 
   const loginUri = `https://id.twitch.tv/oauth2/authorize?response_type=token+id_token&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&scope=viewing_activity_read+openid&claims={"id_token":{"email_verified":null, "preferred_username":null}}`;
   return {
-    props: {loginUri}, // will be passed to the page component as props
-  }
+    props: { loginUri }, // will be passed to the page component as props
+  };
 }

@@ -15,11 +15,11 @@ function getInputFiles(inputPath: string): Promise<InputFile[]> {
   }
   const files = readdirSync(inputPath);
 
-  const filePromises = files.map(fileName => {
+  const filePromises = files.map((fileName) => {
     const filePath = join(inputPath, fileName);
 
     return readFile(filePath, { encoding: 'utf-8' }).then((data) => {
-      return {data, fileName};
+      return { data, fileName };
     });
   });
 

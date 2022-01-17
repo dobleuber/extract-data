@@ -1,15 +1,39 @@
-# Turborepo starter
+# Twitch integration
 
-This is an official Yarn v1 starter turborepo.
+## Website
 
-## What's inside?
+You can run the website locally by running the following command:
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes the following packages/apps:
+```
+npm run dev
+```
+
+Then you can visit the website at [http://localhost:3000](http://localhost:3000).
+
+Or go to the deployed version at [Website](https://extract-data-two.vercel.app/).
+
+## Node app
+
+To extract data from input files, you can put your files in the `/apps/node/inputs` folder and run the following command:
+
+```
+yarn start
+```
+
+The files should be txt files.
+You will see the output in the console output in this format:
+
+```
+Contribution period:  { start: [ 'January 1', 'July 1' ], end: [ 'June 30', 'December 31' ] }
+Contributions { min: [ '1%' ], max: [ '15%' ] }
+```
+
+## Turborepo Repository
 
 ### Apps and Packages
 
-- `node`: a [nodeje](https://nodejs.org) app
-- `web`: a [Next.js](https://nextjs.org) app
+- `node`: a [nodeje](https://nodejs.org) app, this node application is used to extract the unstructure data from input files.
+- `web`: a [Next.js](https://nextjs.org) app, this is the web applitation for testing openID integration, I am using Twitch.
 - `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
@@ -33,7 +57,7 @@ This repository is used in the `npx create-turbo` command, and selected when cho
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd extrat-data
 yarn run build
 ```
 
@@ -42,36 +66,7 @@ yarn run build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd extrat-data
 yarn run dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching (Beta) you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
 ```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turborepo.org/docs/features/pipelines)
-- [Caching](https://turborepo.org/docs/features/caching)
-- [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching)
-- [Scoped Tasks](https://turborepo.org/docs/features/scopes)
-- [Configuration Options](https://turborepo.org/docs/reference/configuration)
-- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)

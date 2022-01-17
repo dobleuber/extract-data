@@ -34,7 +34,7 @@ export default function getContributions(input: string): Contribution {
             max.push(find);
           } else if (isMinimun(subSentence)) {
             min.push(find);
-          } 
+          }
         }
       });
 

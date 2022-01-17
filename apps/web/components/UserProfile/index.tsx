@@ -16,10 +16,14 @@ export const UserProfile = ({
       {username ? (
         <>
           <h2 className={styles.h2}>{username}</h2>
-          <button onClick={logout} className={styles.button}>Logout</button>
+          <button onClick={logout} className={styles.button}>
+            Logout
+          </button>
         </>
       ) : (
-        <a className={styles.link}  href={loginUri}>twitch login</a>
+        <a className={styles.link} href={loginUri}>
+          twitch login
+        </a>
       )}
     </div>
   );
